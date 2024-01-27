@@ -14,6 +14,7 @@ Certifique-se de ter o Node.js e o npm instalados em sua máquina antes de execu
 2. Navegue até o diretório do projeto.
    ```bash
    cd DownloadVideos
+   cd backend
    ```
 3. Instale as dependências.
    ```bash
@@ -23,15 +24,25 @@ Certifique-se de ter o Node.js e o npm instalados em sua máquina antes de execu
 ## Uso Local
 1. Inicie o servidor.
    ```bash
-   npm start
+   npm run dev
    ```
 2. Faça uma requisição HTTP do tipo GET para `http://localhost:4000/download?URL={VIDEO_URL}` enviando o url do vídeo como parâmetro.
 
+## Utilizando curl
+   ```bash
+   curl "http://localhost:4000/download?URL={VIDEO_URL}"
+   ```
+
 ## Utilizando a API
-Você também pode usar a API para baixar seus áudios. Envie uma solicitação GET para `https://download-music-project.vercel.app/download?URL=${VIDEO_URL}` enviando o url do vídeo como parâmetro.
+Você também pode usar a API para baixar seus áudios. Envie uma solicitação GET para `https://download-music-project.vercel.app/download?URL={VIDEO_URL}` enviando o url do vídeo como parâmetro.
+
+## Utilizando curl
+   ```bash
+   curl "https://download-music-project.vercel.app/download?URL={VIDEO_URL}"
+   ```
 
 ## Utilizando o FRONTEND
-Ou você pode utilizar o frontend em `https://jxnatan7.github.io/DownloadVideos/site/index.html` para baixar o arquivo .mp3.
+Ou você pode utilizar o frontend em [Downaload MP3](https://jxnatan7.github.io/DownloadVideos/site/index.html) para baixar o arquivo .mp3.
 
 ## Contribuição
 Sinta-se à vontade para contribuir para o projeto. Abra problemas ou envie pull requests.
