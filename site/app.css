@@ -124,8 +124,10 @@ footer p {
     max-width: 300px;
     padding: 20px;
     margin-bottom: 10px;
-    color: rgb(255, 0, 64);
-    background-color: #F2F2F2;
+    color: #FFF;
     border-radius: 10px;
+    text-align: center;
     display: none;
+    justify-content: center;
+    align-items: center;
 }
