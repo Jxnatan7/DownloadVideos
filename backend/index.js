@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
-const ffmpegStatic = require('ffmpeg-static');
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 
-ffmpeg.setFfmpegPath(ffmpegStatic);
+ffmpeg.setFfmpegPath(ffmpegPath);
 
 const app = express();
 
