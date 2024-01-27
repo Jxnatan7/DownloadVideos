@@ -13,10 +13,5 @@
       "dest": "/backend/index.js"
     }
   ],
-  "build": {
-    "commands": [
-      "cd backend",
-      "npm install"
-    ]
-  }
+  "installCommand": "npm install"
 }
