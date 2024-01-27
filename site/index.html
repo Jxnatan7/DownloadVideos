@@ -3,12 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MP3 Downloader</title>
+    <link rel="shortcut icon" href="assets/favicon-32x32.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-    <label for="urlInput">Insira a URL:</label>
-    <input type="text" id="urlInput" placeholder="Digite a URL">
-    <button id="downloadButton">Baixar MP3</button>    
+    <section id="title">
+        <h1>Downloading MP3 music <br> is so easy now!</h1>
+    </section>
+    <div class="container">
+        <label class="input-label" for="urlInput">Enter the URL:</label>
+        <input type="text" id="urlInput" placeholder="ex.: https://www.youtube.com/watch?v=9YRu4Q60Tgw&list=RDVYnAy-xJslM&index=18&pp=8AUB">
+        <button id="downloadButton" style="--clr: #00ad54">
+            <span class="button-decor"></span>
+            <div class="button-content">
+                <span class="button__text">Download MP3</span>
+            </div>
+        </button>
+    </div>
+    <footer>
+        <p>Jonatan Santos</p>
+        <p><a href="mailto:jonatan.santos.contato@gmail.com">jonatan.santos.contato@gmail.com</a></p>
+    </footer>
 </body>
-<script src="./app.js" type="script"></script>          
+<script src="app.js"></script>          
 </html>
