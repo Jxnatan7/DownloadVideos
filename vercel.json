@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "/backend",
+      "src": "backend",
       "use": "@vercel/node",
       "config": {
         "buildCommand": "npm install"
