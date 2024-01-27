@@ -4,6 +4,7 @@
   "description": "",
   "main": "youtubeDownloader.js",
   "scripts": {
+    "start": "node youtubeDownloader.js",
     "dev": "nodemon youtubeDownloader.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

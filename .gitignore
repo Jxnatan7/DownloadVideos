@@ -2,3 +2,4 @@ package-lock.json
 /videos
 /node_modules
 /audios
+.vercel
