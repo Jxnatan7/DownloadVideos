@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "./backend/index.js",
+      "src": "./backend",
       "use": "@vercel/node"
     }
   ],
@@ -11,5 +11,12 @@
       "src": "/(.*)",
       "dest": "/backend/index.js"
     }
-  ]
+  ],
+  "build": {
+    "commands": [
+      "cd backend",
+      "npm install",
+      "npm run build"
+    ]
+  }
 }
