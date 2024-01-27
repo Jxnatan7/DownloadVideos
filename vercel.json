@@ -2,8 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "./backend",
-      "use": "@vercel/node"
+      "src": "/backend",
+      "use": "@vercel/node",
+      "config": {
+        "buildCommand": "npm install"
+      }
     }
   ],
   "routes": [
