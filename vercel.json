@@ -3,7 +3,8 @@
   "builds": [
     {
       "src": "./backend",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "command": "npm install"
     }
   ],
   "routes": [
@@ -15,8 +16,7 @@
   "build": {
     "commands": [
       "cd backend",
-      "npm install",
-      "npm run build"
+      "npm install"
     ]
   }
 }
