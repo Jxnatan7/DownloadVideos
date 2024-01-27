@@ -13,6 +13,7 @@ app.listen(4000, () => {
 app.get('/download', async (req, res) => {
     try {
         const URL = req.query.URL;
+        console.log(URL);
         res.header('Content-Disposition', 'attachment; filename="audio.mp3"');
         
         const response = await ytdl(URL, { format: 'mp3', filter: 'audioonly' });
