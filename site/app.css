@@ -117,3 +117,15 @@ footer {
 footer p {
     color: #FFF;
 }
+
+#message {
+    width: 80%;
+    height: 50px;
+    max-width: 300px;
+    padding: 20px;
+    margin-bottom: 10px;
+    color: rgb(255, 0, 64);
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    display: none;
+}

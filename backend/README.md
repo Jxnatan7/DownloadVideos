@@ -28,7 +28,7 @@ Certifique-se de ter o Node.js e o npm instalados em sua máquina antes de execu
 2. Faça uma requisição HTTP do tipo GET para `http://localhost:4000/download?URL={VIDEO_URL}` enviando o url do vídeo como parâmetro.
 
 ## Utilizando a API
-Você também pode usar a API para baixar vídeos programaticamente. Envie uma solicitação GET para `https://download-music-project.vercel.app/download?URL=${VIDEO_URL}` enviando o url do vídeo como parâmetro.
+Você também pode usar a API para baixar seus áudios. Envie uma solicitação GET para `https://download-music-project.vercel.app/download?URL=${VIDEO_URL}` enviando o url do vídeo como parâmetro.
 
 ## Utilizando o FRONTEND
 Ou você pode utilizar o frontend em `https://jxnatan7.github.io/DownloadVideos/site/index.html` para baixar o arquivo .mp3.
