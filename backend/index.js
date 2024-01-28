@@ -47,6 +47,7 @@ app.get('/download', async (req, res) => {
 
         const videoTitle = info.videoDetails.title;
 
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Your-Other-Headers');
         res.header('Content-Disposition', `attachment; filename="${videoTitle}.mp3"`);
 
         ffmpegCommand.on('end', () => {
