@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'https://jxnatan7.github.io',
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204,
