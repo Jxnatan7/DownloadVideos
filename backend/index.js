@@ -14,9 +14,7 @@ app.use((req, res, next) => {
 });
 
 
-app.use(cors({
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
-}));
+app.use(cors());
 
 app.listen(8080, () => {
     console.log('Server works');
