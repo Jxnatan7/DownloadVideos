@@ -38,27 +38,28 @@ app.get('/download', async (req, res) => {
         }
 
         const stream = ytdl(URL, { format: 'mp4', quality: 140 });
+        stream.pipe(res, { end: true });
 
-        const ffmpegCommand = ffmpeg();
-        ffmpegCommand.input(stream);
-        ffmpegCommand.audioCodec('libmp3lame');
-        ffmpegCommand.audioBitrate(192);
-        ffmpegCommand.format('mp3');
+//         const ffmpegCommand = ffmpeg();
+//         ffmpegCommand.input(stream);
+//         ffmpegCommand.audioCodec('libmp3lame');
+//         ffmpegCommand.audioBitrate(192);
+//         ffmpegCommand.format('mp3');
 
-        const videoTitle = info.videoDetails.title.replace(/[^\w\s\-]/g, '');
-;
-        res.header('Content-Disposition', `attachment; filename="${videoTitle}.mp3"`);
+//         const videoTitle = info.videoDetails.title.replace(/[^\w\s\-]/g, '');
+// ;
+//         res.header('Content-Disposition', `attachment; filename="${videoTitle}.mp3"`);
 
-        ffmpegCommand.on('end', () => {
-            console.info(`Conversion finished for ${videoTitle}`);
-        });
+//         ffmpegCommand.on('end', () => {
+//             console.info(`Conversion finished for ${videoTitle}`);
+//         });
 
-        ffmpegCommand.on('error', (err) => {
-            console.error('Error during conversion:', err);
-            res.status(500).json({ error: 'Error during conversion', message: err.message });
-        });
+//         ffmpegCommand.on('error', (err) => {
+//             console.error('Error during conversion:', err);
+//             res.status(500).json({ error: 'Error during conversion', message: err.message });
+//         });
 
-        ffmpegCommand.pipe(res, { end: true });
+        // ffmpegCommand.pipe(res, { end: true });
     } catch (error) {
         console.error('Error during download:', error);
         res.status(500).json({ error: 'Error during download', message: error.message });
