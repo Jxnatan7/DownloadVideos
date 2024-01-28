@@ -7,7 +7,7 @@ document.getElementById('downloadButton').addEventListener('click', async functi
         return;
     }
 
-    const downloadURL = `https://download-music-project.vercel.app/download?URL=${encodeURIComponent(parametroURL)}`;
+    const downloadURL = `http://localhost:8080/download?URL=${encodeURIComponent(parametroURL)}`;
     
     try {
         const { title } = await downloadFile(downloadURL);
@@ -26,32 +26,40 @@ function displayMessage(message, type) {
 }
 
 async function downloadFile(url) {
-    const response = await fetch(url);
+    try {
+        const response = await fetch(url);
 
-    if (!response.ok) {
-        throw new Error(`HTTP ERROR: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`HTTP ERROR: ${response.status}`);
+        }
+
+        const contentDisposition = response.headers.get('Content-Disposition');
+        const match = contentDisposition && contentDisposition.match(/filename="(.+)"/);
+
+        if (!match) {
+            throw new Error('Filename not found in Content-Disposition header');
+        }
+
+        const title = match[1];
+
+        const blob = await response.blob();
+
+        const urlObject = window.URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = urlObject;
+
+        a.download = title;
+
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        window.URL.revokeObjectURL(urlObject);
+
+        return { title };
+    } catch (error) {
+        console.error('Error during download:', error.message);
+        throw error;
     }
-
-    const responseClone = response.clone();
-
-    const blob = await response.blob();
-
-    const data = await responseClone.json();
-
-    const title = data.title;
-
-    const urlObject = window.URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = urlObject;
-
-    a.download = `${title}.mp3`;
-
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    window.URL.revokeObjectURL(urlObject);
-
-    return { title };
 }
