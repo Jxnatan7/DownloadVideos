@@ -15,9 +15,7 @@ app.use((req, res, next) => {
 
 
 app.use(cors({
-    origin: 'https://jxnatan7.github.io/DownloadVideos/site/index.html',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 }));
 
 app.listen(8080, () => {
