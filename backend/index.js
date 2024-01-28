@@ -46,8 +46,7 @@ app.get('/download', async (req, res) => {
         ffmpegCommand.format('mp3');
 
         const videoTitle = info.videoDetails.title.replace(/[^\w\s\-]/g, '');
-
-        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Your-Other-Headers');
+;
         res.header('Content-Disposition', `attachment; filename="${videoTitle}.mp3"`);
 
         ffmpegCommand.on('end', () => {
