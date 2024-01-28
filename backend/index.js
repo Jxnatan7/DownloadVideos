@@ -8,11 +8,7 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 const app = express();
 
-app.use(cors({
-    origin: 'https://jxnatan7.github.io/DownloadVideos/site/index.html',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-}));
+app.use(cors());
 
 app.listen(8080, () => {
     console.log('Server works');
