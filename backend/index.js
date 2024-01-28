@@ -9,9 +9,13 @@ ffmpeg.setFfmpegPath(ffmpegPath.path);
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(express.json());
+const corsOptions = {
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    exposedHeaders: 'Content-Disposition',
+};
 
-app.use(cors({ origin: '*' }));
+app.use(cors(corsOptions));
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
