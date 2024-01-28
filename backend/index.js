@@ -7,7 +7,7 @@ const ffmpegPath = require('@ffmpeg-installer/ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath.path);
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = 4000;
 
 const corsOptions = {
     origin: '*',
@@ -51,7 +51,7 @@ app.get('/download', async (req, res) => {
         res.header('Content-Disposition', `attachment; filename="${videoTitle}.mp3"`);
 
         ffmpegCommand.on('end', () => {
-            console.log(`Conversion finished for ${videoTitle}`);
+            console.info(`Conversion finished for ${videoTitle}`);
         });
 
         ffmpegCommand.on('error', (err) => {
