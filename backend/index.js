@@ -14,9 +14,11 @@ app.use(express.json());
 const corsOptions = {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
+    exposedHeaders: 'Content-Disposition',
 };
+
+app.use(cors(corsOptions));
+
 
 app.use(cors(corsOptions));
 
@@ -50,6 +52,7 @@ app.get('/download', async (req, res) => {
 
         const videoTitle = info.videoDetails.title;
 
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Your-Other-Headers');
         res.header('Content-Disposition', `attachment; filename="${videoTitle}.mp3"`);
 
         ffmpegCommand.on('end', () => {

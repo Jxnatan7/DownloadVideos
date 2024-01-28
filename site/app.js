@@ -7,7 +7,7 @@ document.getElementById('downloadButton').addEventListener('click', async functi
         return;
     }
 
-    const downloadURL = `https://download-music-project.vercel.app/download?URL=${parametroURL}`;
+    const downloadURL = `http://localhost:8080/download?URL=${parametroURL}`;
 
     try {
         const { title } = await downloadFile(downloadURL);
@@ -33,8 +33,15 @@ async function downloadFile(url) {
             throw new Error(`HTTP ERROR: ${response.status}`);
         }
 
-        const contentDisposition = response.headers.get('Content-Disposition');
-        const match = contentDisposition && contentDisposition.match(/filename="(.+)"/);
+        const blob = await response.blob();
+
+        const responseHeaders = {};
+
+        response.headers.forEach((value, key) => {
+            responseHeaders[key] = value;
+        });
+
+        const match = responseHeaders['content-disposition'] && responseHeaders['content-disposition'].match(/filename="(.+)"/);
 
         if (!match) {
             throw new Error('Filename not found in Content-Disposition header');
@@ -42,14 +49,12 @@ async function downloadFile(url) {
 
         const title = match[1];
 
-        const blob = await response.blob();
-
         const urlObject = window.URL.createObjectURL(blob);
 
         const a = document.createElement('a');
         a.href = urlObject;
 
-        a.download = title;
+        a.download = `${title}.mp3`;
 
         document.body.appendChild(a);
         a.click();
@@ -58,6 +63,7 @@ async function downloadFile(url) {
         window.URL.revokeObjectURL(urlObject);
 
         return { title };
+        
     } catch (error) {
         console.error('Error during download:', error.message);
         throw error;
