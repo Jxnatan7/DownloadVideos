@@ -8,13 +8,12 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 const app = express();
 
+app.use(cors());
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition');
     next();
 });
-
-
-app.use(cors());
 
 app.listen(8080, () => {
     console.log('Server works');
