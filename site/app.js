@@ -54,7 +54,7 @@ async function downloadFile(url) {
         const a = document.createElement('a');
         a.href = urlObject;
 
-        a.download = `${title}.mp3`;
+        a.download = `${title}`;
 
         document.body.appendChild(a);
         a.click();
