@@ -2,26 +2,27 @@ const express = require('express');
 const cors = require('cors');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg');
 
-ffmpeg.setFfmpegPath(ffmpegPath);
+ffmpeg.setFfmpegPath(ffmpegPath.path);
 
 const app = express();
+const PORT = process.env.PORT || 8080;
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition');
-    next();
-});
-
+app.use(express.json());
 app.use(cors());
 
-app.listen(8080, () => {
-    console.log('Server works');
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 app.get('/download', async (req, res) => {
     try {
         const URL = req.query.URL;
+
+        if (!URL || typeof URL !== 'string') {
+            throw new Error('Invalid or missing YouTube video URL');
+        }
 
         const info = await ytdl.getInfo(URL);
 
@@ -44,17 +45,17 @@ app.get('/download', async (req, res) => {
         res.header('Content-Disposition', `attachment; filename="${videoTitle}.mp3"`);
 
         ffmpegCommand.on('end', () => {
-            console.log('Conversion finished');
+            console.log(`Conversion finished for ${videoTitle}`);
         });
 
         ffmpegCommand.on('error', (err) => {
             console.error('Error during conversion:', err);
-            res.status(500).send('Error during conversion');
+            res.status(500).json({ error: 'Error during conversion', message: err.message });
         });
 
         ffmpegCommand.pipe(res, { end: true });
     } catch (error) {
-        console.error('Error during download:', error.message);
-        res.status(500).send('Error during download');
+        console.error('Error during download:', error);
+        res.status(500).json({ error: 'Error during download', message: error.message });
     }
 });

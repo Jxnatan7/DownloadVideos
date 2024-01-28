@@ -3,11 +3,11 @@ document.getElementById('downloadButton').addEventListener('click', async functi
     const parametroURL = urlInput.value;
 
     if (!parametroURL) {
-        displayMessage('Please enter a URL.');
+        displayMessage('Please enter a URL.', 1);
         return;
     }
 
-    const downloadURL = `https://download-music-project.vercel.appdownload?URL=${encodeURIComponent(parametroURL)}`;
+    const downloadURL = `https://download-music-project.vercel.app/download?URL=${encodeURIComponent(parametroURL)}`;
     
     try {
         const { title } = await downloadFile(downloadURL);
