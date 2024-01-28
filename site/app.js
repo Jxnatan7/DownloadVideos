@@ -27,7 +27,7 @@ function displayMessage(message, type) {
 
 async function downloadFile(url) {
     try {
-        const response = await fetch(url, { mode: 'cors' });
+        const response = await fetch(url, { mode: 'no-cors' });
 
         if (!response.ok) {
             throw new Error(`HTTP ERROR: ${response.status}`);
