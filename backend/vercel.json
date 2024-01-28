@@ -13,7 +13,7 @@
     }
   ],
   "functions": {
-    "api/download": {
+    "index.js": {
       "maxDuration": 60
     }
   }
