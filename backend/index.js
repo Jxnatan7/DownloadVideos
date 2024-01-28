@@ -15,8 +15,7 @@ app.use((req, res, next) => {
 
 
 app.use(cors({
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 }));
 
 app.listen(8080, () => {
