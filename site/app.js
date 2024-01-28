@@ -7,8 +7,8 @@ document.getElementById('downloadButton').addEventListener('click', async functi
         return;
     }
 
-    const downloadURL = `https://download-music-project.vercel.app/download?URL=${encodeURIComponent(parametroURL)}`;
-    
+    const downloadURL = `https://download-music-project.vercel.app/download?URL=${parametroURL}`;
+
     try {
         const { title } = await downloadFile(downloadURL);
         displayMessage(`Your download of ${title} start.`, 0);
